@@ -1,0 +1,60 @@
+use departmentdb;
+
+-- How many employees were hired in 2019?
+SELECT COUNT(emp_id) AS employee_count
+FROM Employee 
+WHERE YEAR(hire_date) = 2019;
+
+-- What is the maximum and minimum salary in the 'IT' department?
+SELECT 
+    d.name AS department_name,
+    MAX(e.salary) AS max_salary,
+    MIN(e.salary) AS min_salary
+FROM 
+    Employee e
+JOIN 
+    Department d ON e.department_id = d.department_id
+WHERE 
+    d.name = 'IT';
+    
+-- Which department has the highest total salary expense?
+SELECT 
+    d.name AS department_name,
+    SUM(e.salary) AS total_salary
+FROM 
+    Employee e
+JOIN 
+    Department d ON e.department_id = d.department_id
+GROUP BY 
+    d.name
+ORDER BY 
+    total_salary DESC
+LIMIT 1;
+
+
+-- Count the number of employees in each department.
+SELECT 
+    d.name AS department_name,
+    COUNT(e.emp_id) AS employee_count
+FROM 
+    Department d
+LEFT JOIN 
+    Employee e ON d.department_id = e.department_id
+GROUP BY 
+    d.name;
+
+
+
+
+-- What is the average salary of employees in each department?
+SELECT 
+    d.name AS department_name,
+    AVG(e.salary) AS average_salary
+FROM 
+    Employee e
+JOIN 
+    Department d ON e.department_id = d.department_id
+GROUP BY 
+    d.name;
+
+

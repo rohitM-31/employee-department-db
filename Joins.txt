@@ -1,0 +1,50 @@
+-- joins
+-- Show employee names, their department names, and hire dates.
+select e.name as employee_name ,d.name as depart_name , e.hire_date
+from employee e
+left join
+department d on  e.department_id=d.department_id;
+
+-- List all employees and count how many projects their department is handling.
+select e.emp_id as emp_idd,e.name as emp_name ,d.name as depart_name,
+count(p.project_id) as project_count
+from employee e
+left join 
+department d on e.department_id=d.department_id
+left join
+project p on p.department_id=d.department_id
+group by emp_id,emp_name,d.name
+order by emp_idd ASC;
+ 
+-- Show all project names and the names of employees working in that project's department.
+SELECT 
+    p.name AS project_name,
+    e.name AS employee_name,
+    d.name AS department_name
+FROM 
+    Project p
+JOIN 
+    Department d ON p.department_id = d.department_id
+JOIN 
+    Employee e ON p.department_id = e.department_id
+ORDER BY 
+    p.name, e.name;
+
+-- Display all department names that have at least one project and one employee.
+
+SELECT DISTINCT d.name AS department_name
+FROM Department d
+JOIN Employee e ON d.department_id = e.department_id
+JOIN Project p ON d.department_id = p.department_id;
+
+-- List all employees who work in departments that also manage 'Project Gamma'.
+select e.emp_id,e.name as emp_name,d.name as depart_name,p.name as project_name
+from employee e
+join department d on d.department_id=e.department_id
+join project p on d.department_id=p.department_id
+where p.name='Project Gamma';
+
+
+
+
+

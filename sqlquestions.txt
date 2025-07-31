@@ -1,0 +1,40 @@
+🔹 Basic SELECT and Filters
+List all employees and their respective department names.
+
+List all employees who do not belong to any department.
+
+List all projects and their corresponding department names.
+
+Find all projects that are not assigned to any department.
+
+Show all employees hired after January 1, 2020.
+
+Display employee names who earn a salary greater than 60,000.
+
+Find the names of employees who belong to the 'Finance' department.
+
+List the projects handled by the 'Marketing' department.
+
+Find the names of departments that do not have any employees.
+
+List all employees with their name, salary, and age, sorted by salary descending.
+
+🔹 JOINs
+Show employee names, their department names, and hire dates.
+
+List all employees and count how many projects their department is handling.
+
+Display all department names that have at least one project and one employee.
+
+List all employees who work in departments that also manage 'Project Gamma'.
+
+🔹 Aggregations
+What is the average salary of employees in each department?
+
+Which department has the highest total salary expense?
+
+Count the number of employees in each department.
+
+What is the maximum and minimum salary in the 'IT' department?
+
+How many employees were hired in 2019?

@@ -1,0 +1,53 @@
+use departmentdb;
+select sum(salary) from employee ;
+
+-- List all employees and their respective department names.
+select e.emp_id,e.name,d.name from employee e
+left join department d on e.department_id=d.department_id;
+
+-- List all employees who do not belong to any department.
+select * from employee 
+where department_id is NULL;
+
+-- List all projects and their corresponding department names.
+select p.project_id,p.name ,d.name 
+from 
+  project p
+  left join 
+  department d on p.department_id=d.department_id;
+  
+
+-- Show all employees hired after January 1, 2020.
+select * from employee
+where hire_date>'2020-01-01';
+
+-- Display employee names who earn a salary greater than 60,000.
+select name from employee
+where salary>60000;
+
+-- Find the names of employees who belong to the 'Finance' department.
+select e.emp_id,e.name as employee_name,d.name as depart_name
+from 
+ employee e
+ join department d  on e.department_id=d.department_id
+ where d.name='Finance';
+
+-- List the projects handled by the 'Marketing' department.
+select p.name as proj_name,p.project_id ,d.name as depart_name
+from  
+project p
+join 
+ department d on p.department_id=d.department_id
+ where d.name='Marketing';
+ 
+ use departmentdb;
+-- Find the names of departments that don not have any employees
+select d.department_id,d.name as depart_name 
+from department d
+left join employee e on e.department_id=d.department_id
+where e.emp_id is null;
+
+-- List all employees with their name, salary, and age, sorted by salary descending.
+select name,salary,age 
+from employee
+order by salary DESC;
